@@ -14,9 +14,9 @@ npx serve .
 
 - `index.html` — single-page site (hero, about, pricing, WaaS comparison, service area, contact)
 - `styles.css` — black background, logo-matched blue palette
-- `main.js` — mobile nav and contact form placeholder
+- `main.js` — mobile nav, back-to-top, and Formspree contact form handler
 - `assets/logo.png` — brand logo
 
 ## Customize
 
-Update the contact email in `index.html` and wire the contact form to your backend or form service (e.g. Formspree, Netlify Forms).
+The contact form posts to [Formspree](https://formspree.io) at `https://formspree.io/f/xojbzjog`. Submissions are managed in your Formspree dashboard.

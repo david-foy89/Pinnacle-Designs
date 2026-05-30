@@ -44,16 +44,60 @@ if (backToTop) {
 }
 
 if (form) {
-  form.addEventListener("submit", (e) => {
+  const btn = form.querySelector('button[type="submit"]');
+  const status = document.getElementById("form-status");
+  const originalLabel = btn?.textContent ?? "Send Message";
+
+  const setStatus = (message, type) => {
+    if (!status) return;
+    status.textContent = message;
+    status.className = type ? `form-status form-status--${type}` : "form-status";
+    status.hidden = !message;
+  };
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const original = btn.textContent;
-    btn.textContent = "Message sent — we'll be in touch!";
+    setStatus("", "");
+
+    if (!btn) return;
+
     btn.disabled = true;
-    form.reset();
-    setTimeout(() => {
-      btn.textContent = original;
+    btn.textContent = "Sending…";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      let data = {};
+      try {
+        data = await response.json();
+      } catch {
+        /* non-JSON error body */
+      }
+
+      if (!response.ok || data.error) {
+        throw new Error(data.error || "Could not send message.");
+      }
+
+      form.reset();
+      btn.textContent = "Message sent — we'll be in touch!";
+      setStatus("Thanks! We'll get back to you soon.", "success");
+
+      setTimeout(() => {
+        btn.textContent = originalLabel;
+        btn.disabled = false;
+        setStatus("", "");
+      }, 5000);
+    } catch {
+      btn.textContent = originalLabel;
       btn.disabled = false;
-    }, 4000);
+      setStatus(
+        "Something went wrong. Please try again or email hello@pinnacledesigns.com directly.",
+        "error"
+      );
+    }
   });
 }

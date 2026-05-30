@@ -264,7 +264,13 @@
             <p><strong>Email:</strong> <a href="mailto:hello@pinnacledesigns.com">hello@pinnacledesigns.com</a></p>
           </div>
         </div>
-        <form class="contact-form" action="#" method="post">
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xojbzjog"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New contact — Pinnacle Designs website" />
+          <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <label>
             <span>Name</span>
             <input type="text" name="name" required autocomplete="name" />
@@ -295,6 +301,7 @@
             <span>Message</span>
             <textarea name="message" rows="4" placeholder="Tell us about your business and what you need from your site."></textarea>
           </label>
+          <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
           <button type="submit" class="btn btn-primary btn-block">Send Message</button>
         </form>
       </div>
