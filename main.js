@@ -1,3 +1,5 @@
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xojbzjog";
+
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const yearEl = document.getElementById("year");
@@ -43,7 +45,43 @@ if (backToTop) {
   });
 }
 
+function formatFormspreeError(data) {
+  if (data?.errors?.length) {
+    return data.errors.map((e) => e.message).join(" ");
+  }
+  if (typeof data?.error === "string") {
+    return data.error;
+  }
+  return "Could not send message. Please try again.";
+}
+
+async function submitToFormspree(formEl) {
+  const response = await fetch(FORMSPREE_ENDPOINT, {
+    method: "POST",
+    body: new FormData(formEl),
+    headers: { Accept: "application/json" },
+  });
+
+  let data = {};
+  try {
+    data = await response.json();
+  } catch {
+    if (response.ok) {
+      return { ok: true };
+    }
+  }
+
+  if (response.ok && data.ok) {
+    return { ok: true };
+  }
+
+  return { ok: false, message: formatFormspreeError(data) };
+}
+
 if (form) {
+  form.setAttribute("action", FORMSPREE_ENDPOINT);
+  form.setAttribute("method", "POST");
+
   const btn = form.querySelector('button[type="submit"]');
   const status = document.getElementById("form-status");
   const originalLabel = btn?.textContent ?? "Send Message";
@@ -57,47 +95,49 @@ if (form) {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     setStatus("", "");
 
-    if (!btn) return;
-
-    btn.disabled = true;
-    btn.textContent = "Sending…";
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+    }
 
     try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      });
+      const result = await submitToFormspree(form);
 
-      let data = {};
-      try {
-        data = await response.json();
-      } catch {
-        /* non-JSON error body */
+      if (result.ok) {
+        form.reset();
+        if (btn) btn.textContent = "Message sent — we'll be in touch!";
+        setStatus("Thanks! We'll get back to you soon.", "success");
+
+        setTimeout(() => {
+          if (btn) {
+            btn.textContent = originalLabel;
+            btn.disabled = false;
+          }
+          setStatus("", "");
+        }, 5000);
+        return;
       }
 
-      if (!response.ok || data.error) {
-        throw new Error(data.error || "Could not send message.");
-      }
-
-      form.reset();
-      btn.textContent = "Message sent — we'll be in touch!";
-      setStatus("Thanks! We'll get back to you soon.", "success");
-
-      setTimeout(() => {
+      setStatus(result.message, "error");
+      if (btn) {
         btn.textContent = originalLabel;
         btn.disabled = false;
-        setStatus("", "");
-      }, 5000);
+      }
     } catch {
-      btn.textContent = originalLabel;
-      btn.disabled = false;
-      setStatus(
-        "Something went wrong. Please try again or email hello@pinnacledesigns.com directly.",
-        "error"
-      );
+      setStatus("Submitting via backup…", "success");
+      if (btn) {
+        btn.textContent = originalLabel;
+        btn.disabled = false;
+      }
+      HTMLFormElement.prototype.submit.call(form);
     }
   });
 }
