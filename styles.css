@@ -41,6 +41,22 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent-deep);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -465,7 +481,7 @@ a:hover {
 .pricing-tier {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem;
 }
 
 .pricing-for {
@@ -713,9 +729,58 @@ a:hover {
   font-size: 0.95rem;
 }
 
-.area-seo em {
+.area-seo strong {
   color: var(--accent-bright);
-  font-style: normal;
+  font-weight: 600;
+}
+
+/* FAQ */
+.faq {
+  background: var(--bg-elevated);
+  border-block: 1px solid var(--border);
+}
+
+.faq-list {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent-bright);
+  font-weight: 400;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 1.5rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 /* Contact */
@@ -734,6 +799,7 @@ a:hover {
   margin-top: 2rem;
   font-size: 0.95rem;
   color: var(--text-muted);
+  font-style: normal;
 }
 
 .contact-details p {

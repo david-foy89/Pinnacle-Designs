@@ -16,6 +16,7 @@ npx serve .
 - `styles.css` — black background, logo-matched blue palette
 - `main.js` — mobile nav, back-to-top, and Formspree contact form handler
 - `assets/logo.png` — brand logo
+- `robots.txt` / `sitemap.xml` — search engine crawling
 
 ## Customize
 
