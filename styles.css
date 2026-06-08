@@ -1062,6 +1062,10 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 900px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
   .hero-inner,
   .about-grid,
   .pricing-grid,
@@ -1075,14 +1079,96 @@ a:hover {
     order: -1;
   }
 
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-lead {
+    margin-inline: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 auto;
+    min-width: min(16rem, 100%);
+    max-width: 20rem;
+  }
+
   .hero-brand,
   .hero-logo {
     max-width: 360px;
+    margin-inline: auto;
   }
 
   .hero-tagline {
     font-size: 0.85rem;
     letter-spacing: 0.3em;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .about-text,
+  .about-card,
+  .contact-copy {
+    text-align: center;
+  }
+
+  .about-list,
+  .compare-col ul {
+    max-width: 22rem;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .pricing-card,
+  .outcome-card {
+    text-align: center;
+  }
+
+  .pricing-features {
+    max-width: 16rem;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .compare-col {
+    text-align: center;
+  }
+
+  .health-check {
+    text-align: center;
+  }
+
+  .checklist {
+    text-align: left;
+  }
+
+  .guarantee {
+    border-left: none;
+    border-top: 4px solid var(--accent);
+    border-radius: var(--radius-lg);
+  }
+
+  .area-tags {
+    justify-content: center;
+  }
+
+  .area-seo {
+    text-align: center;
+  }
+
+  .contact-details {
+    text-align: center;
   }
 
   .faq-item summary {
@@ -1106,6 +1192,21 @@ a:hover {
 @media (max-width: 768px) {
   :root {
     --header-h: 132px;
+  }
+
+  .hero-inner {
+    padding: 2.5rem 0 2rem;
+    gap: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 20rem;
   }
 
   .nav-toggle {
