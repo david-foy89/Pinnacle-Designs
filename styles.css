@@ -1075,15 +1075,29 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .hero-inner {
+    justify-items: center;
+    text-align: center;
+  }
+
   .hero-visual {
     order: -1;
+    width: 100%;
   }
 
   .hero-content {
+    width: 100%;
+    max-width: 28rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .hero-eyebrow,
+  .hero h1,
+  .hero-lead {
+    width: 100%;
   }
 
   .hero-lead {
@@ -1091,14 +1105,17 @@ a:hover {
   }
 
   .hero-actions {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
   }
 
   .hero-actions .btn {
-    flex: 1 1 auto;
-    min-width: min(16rem, 100%);
+    width: 100%;
     max-width: 20rem;
+    flex: none;
   }
 
   .hero-brand,
@@ -1197,16 +1214,6 @@ a:hover {
   .hero-inner {
     padding: 2.5rem 0 2rem;
     gap: 2rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-    max-width: 20rem;
   }
 
   .nav-toggle {
