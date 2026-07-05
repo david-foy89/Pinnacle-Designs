@@ -1,0 +1,9 @@
+# GitHub Pages (Jekyll) — do not add a .nojekyll file (that bypasses this list)
+exclude:
+  - mockups/
+  - scripts/
+  - contracts/
+  - .vscode/
+  - node_modules/
+  - package.json
+  - package-lock.json

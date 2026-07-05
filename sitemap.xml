@@ -3,12 +3,30 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://pinnacle-designs.com/</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://pinnacle-designs.com/assets/og-image.png</image:loc>
-      <image:title>Pinnacle Designs — Web Design Erwin TN</image:title>
+      <image:title>Pinnacle Designs — Website Designer Erwin TN</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://pinnacle-designs.com/web-design-erwin-tn.html</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pinnacle-designs.com/web-design-tri-cities.html</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pinnacle-designs.com/website-designer-near-me.html</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
