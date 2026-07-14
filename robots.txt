@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /mockups/
+Disallow: /contracts/
+Disallow: /pitch-deck/
+Disallow: /scripts/
 
 User-agent: Googlebot
 Allow: /
