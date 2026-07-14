@@ -17,6 +17,7 @@ npx serve .
 - `main.js` — mobile nav, back-to-top, and Formspree contact form handler
 - `assets/logo.png` — brand logo
 - `robots.txt` / `sitemap.xml` — search engine crawling
+- `mockups/` — Etsy marketing images (local only; gitignored and excluded from GitHub Pages)
 
 ## Google Analytics
 

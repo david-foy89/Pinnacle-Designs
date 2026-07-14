@@ -1,0 +1,4 @@
+node_modules/
+
+# Etsy mockups — local only, never deploy to pinnacle-designs.com
+mockups/

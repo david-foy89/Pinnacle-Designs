@@ -1,0 +1,11 @@
+{
+  "name": "pinnacle-designs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export-mockups": "node scripts/export-mockups.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}
