@@ -1,6 +1,6 @@
 # Pinnacle Designs
 
-Marketing website for Pinnacle Designs — web design and Website-as-a-Service (WaaS) for small businesses in Erwin, TN and the Tri-Cities area.
+Marketing website for Pinnacle Designs — web design and Website-as-a-Service (WaaS) for small businesses nationwide, based in Erwin, TN.
 
 ## Run locally
 
